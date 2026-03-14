@@ -30,32 +30,3 @@ jobs:
       ACTOR_DOCKER_HUB: ${{ secrets.ACTOR_DOCKER_HUB }}
       RELEASE_DOCKER_HUB: ${{ secrets.RELEASE_DOCKER_HUB }}
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
-
-  build-inji-web:
-    runs-on: ubuntu-latest
-    env:
-      NAMESPACE: ${{ secrets.dev_namespace_docker_hub }}
-      SERVICE_NAME: ui-test
-      SERVICE_LOCATION: ui-test
-      BUILD_ARTIFACT: ui-test-local
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3.7.0
-        with:
-          node-version: '18'
-      - name: Cache npm dependencies
-        uses: actions/cache@v4
-        with:
-          path: '~/.npm'
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
-      - name: Install the dependencies
-        run: npm install
-        working-directory: inji-web
-      - name: Run unit tests with coverage
-        run: npm test -- --coverage
-        working-directory: inji-web
-      - name: Build the project
-        run: npm run build
-        working-directory: inji-web
