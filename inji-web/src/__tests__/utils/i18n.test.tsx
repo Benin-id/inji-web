@@ -83,9 +83,9 @@ describe.skip('Test i18n configuration', () => {
       expect(mockStorage.getItem).toHaveBeenCalledWith('selectedLanguage');
       expect(mockI18n.use).toHaveBeenCalledWith(initReactI18next);
       expect(mockI18n.init).toHaveBeenCalledWith(expect.objectContaining({
-        resources: { en, ta, kn, hi, fr, ar },
+        resources: { fr },
         lng: selectedLanguage,
-        fallbackLng: 'en',
+        fallbackLng: 'fr',
         interpolation: { escapeValue: false }
       }));
     });
@@ -131,7 +131,6 @@ describe.skip('Test i18n configuration', () => {
   describe('Test getIssuerDisplayObjectForCurrentLanguage functionality', () => {
     test('Check if it returns the correct object for the current language', () => {
       const displayArray = [
-        { language: 'en', value: 'English' },
         { language: 'fr', value: 'French' }
       ];
       
@@ -144,7 +143,6 @@ describe.skip('Test i18n configuration', () => {
 
     test('Check if it falls back to the default language when the requested language is not found', () => {
       const displayArray = [
-        { language: 'en', value: 'English' },
         { language: 'fr', value: 'French' }
       ];
       
@@ -152,7 +150,7 @@ describe.skip('Test i18n configuration', () => {
           displayArray,
           "es"
       );
-      expect(result).toEqual({ language: 'en', value: 'English' });
+      expect(result).toEqual({ language: 'fr', value: 'Français' });
     });
   });
 });

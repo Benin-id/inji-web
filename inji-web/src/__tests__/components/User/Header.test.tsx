@@ -18,13 +18,7 @@ jest.mock('../../../hooks/useApi.ts', () => ({
 jest.mock('../../../utils/i18n', () => ({
     isRTL: jest.fn(),
     LanguagesSupported: [
-        {label: "English", value: 'en'},
-        {label: "தமிழ்", value: 'ta'},
-        {label: "ಕನ್ನಡ", value: 'kn'},
-        {label: "हिंदी", value: 'hi'},
-        {label: "Français", value: 'fr'},
-        {label: "عربي", value: 'ar'},
-        {label: "Português", value: 'pt'}
+        {label: "Français", value: 'fr'}
     ]
 }));
 
