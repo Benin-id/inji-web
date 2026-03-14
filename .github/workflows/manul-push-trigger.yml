@@ -1,4 +1,4 @@
-name: inji-web build upon a push
+name: inji-web ui 
 
 on:
   release:
